@@ -16,10 +16,6 @@
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
 }
@@ -28,11 +24,58 @@
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.html,body{
+  margin: 0;
+  padding: 0;
+}
+
+.navbar {
+  width: 100%;
+  height: 50px;
+  background-color: red;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1%;
+}
+
+.website-name{
+  margin-left: 3%;
+}
+
+.navbar-buttons{
+  display: flex;
+  width: 10%;
+  align-items: center;
+  justify-content: center;
+  gap: 3%;
+}
+
+.page-subtitle{
+  font-size: 20px;
+}
+
+.img-article{
+  width: 50%;
+}
+
+.article-body{
+  font-size: 15px;
+}
+
+.container-img{
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+}
+
+.date-articles{
+  font-size: 13px;
+  margin-right: 10%;
+}
+
+.article-author{
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 3%;
 }
