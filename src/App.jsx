@@ -5,6 +5,7 @@ import {
   Route, BrowserRouter as Router, Routes, useParams, Link, useNavigate,
 } from 'react-router-dom';
 
+import Todos from './components/Todos';
 import useDataFetching from './hooks/useDataFetching';
 import { UserdataContext, initialUserData } from './contexts/userdata';
 import { LanguageContext, initialLanguageState } from './contexts/language';
@@ -29,6 +30,7 @@ function App() {
               <Route path='/pokemon/:pokemon' element={<Pokemon />} />
               <Route path='/type/:type' element={<Type />} />
               <Route path='/notFound' element={<NotFound />} />
+              <Route path='/todos' element={<Todos />} />
             </Routes>
           </Router>
         </UserdataContext.Provider>
@@ -39,7 +41,6 @@ function App() {
 
 
 function SearchBar() {
-
   const navigate = useNavigate();
 
   function search(e) {
@@ -84,7 +85,7 @@ function Home() {
 
   return (
     <>
-      <h1>{messages['SEARCH_YOUR_POKEMON'][language]}</h1>
+      <Titolo>{messages['SEARCH_YOUR_POKEMON'][language]}</Titolo>
       {!isLoggedIn && <h2>Please log in</h2>}
       <button onClick={logMeIn}>Login</button>
     </>
@@ -93,6 +94,8 @@ function Home() {
 
 function Pokemon() {
   const navigate = useNavigate();
+  const [displayMoves, setDisplayMoves] = useState(false);
+  
   const { isLoggedIn, userData } = useContext(UserdataContext);
 
   useEffect(() => {
@@ -105,26 +108,27 @@ function Pokemon() {
   });
 
   function showMoves() {
-    if (document.querySelector('.pokemon-moves').style.display === 'none') {
-      document.querySelector('.pokemon-moves').style.display = 'block';
-    } else {
-      document.querySelector('.pokemon-moves').style.display = 'none';
-    }
+    setDisplayMoves(display => !display);
   }
 
   return (
     <div className='pokemon'>
-      {isLoading && <h1>Caricamento in corso</h1>}
+      {isLoading && <Titolo>Caricamento in corso</Titolo>}
       {isSuccess && <>
-        <h2>{data.name}</h2>
+        <Titolo>{data.name}</Titolo>
         <img src={data.sprites.front_default} alt="" className='pokemon-profile' />
         <h3>Tipo</h3>
         <ul className='pokemon-type'>
           {data.types.map((item, key) =>
             <li key={key}><Link to={`/type/${item.type.name}`}>{item.type.name}</Link> </li>)}
         </ul>
-        <button type='button' onClick={showMoves}>Mostra mosse</button>
-        <ul className='pokemon-moves'>
+        
+        <button type='button' onClick={showMoves}>
+          {displayMoves ? "Nascondi" : "Mostra"}
+        </button>
+
+        <ul className={displayMoves ? "pokemon-moves" : "pokemon-moves hidden"}>
+        {/* <ul style={{ display: displayMoves ? "block" : "none" }}> */}
           {data.moves.map((item, key) => <li key={key}>{item.move.name}</li>)}
         </ul>
       </>}
@@ -145,18 +149,24 @@ function Type() {
   });
 
   if (isLoading) {
-    return <h1>Caricamento in corso</h1>
+    return <Titolo>{"Caricamento in corso"}</Titolo>
   }
 
   return isSuccess ? (
     <>
-      <h2>Tipo:{data.name}</h2>
+      <Titolo>Tipo:{data.name}</Titolo>
       <ul>
         double_damage_from
         {data.damage_relations.double_damage_from.map((item, key) => <li key={key}>{item.name}</li>)}
       </ul>
     </>
   ) : null;
+}
+
+function Titolo({ children }) {
+  return (
+    <h1 style={{ color: "#477EDE" }}>{ children }</h1>
+  )
 }
 
 function NotFound() {

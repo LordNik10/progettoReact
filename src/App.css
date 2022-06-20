@@ -44,6 +44,6 @@ body{
     width: 15%;
 }
 
-.pokemon-moves{
+.pokemon-moves.hidden {
     display: none;
 }

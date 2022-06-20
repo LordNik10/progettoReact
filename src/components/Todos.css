@@ -1,0 +1,16 @@
+.todos {
+    padding: 3rem;
+    font-size: 2rem;
+}
+
+.todos input {
+    font-size: 2rem;
+}
+
+.todos .complete {
+    text-decoration: line-through;
+}
+
+.todos b {
+    padding-left: 1rem;
+}
