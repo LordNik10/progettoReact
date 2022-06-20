@@ -1,81 +1,49 @@
-.App {
-  text-align: center;
+.img-logo{
+    width: 6%;
+    margin-left: 2%;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.navbar{
+    width: 100%;
+    background-color: #477EDE;
+    display: flex;
+    align-items: center;
+    height: 50px;
+    justify-content: space-between;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.navbar-search{
+    display: flex;
+    align-items: center;
+    gap: 5%;
+    justify-content: center;
+    margin-right: 2%;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  font-size: calc(10px + 2vmin);
-  color: white;
+body{
+    min-height: 100vh;
+    background-color: #c6d8fa;
 }
 
-.App-link {
-  color: #61dafb;
+.pokemon{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+.pokemon-type{
+    display: flex;
+    gap: 20%;
+    padding: 0;
+}
+.pokemon-type li{
+    list-style: none;
 }
 
-.html,body{
-  margin: 0;
-  padding: 0;
+.pokemon-profile{
+    width: 15%;
 }
 
-.navbar {
-  width: 100%;
-  height: 50px;
-  background-color: red;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1%;
-}
-
-.website-name{
-  margin-left: 3%;
-}
-
-.navbar-buttons{
-  display: flex;
-  width: 10%;
-  align-items: center;
-  justify-content: center;
-  gap: 3%;
-}
-
-.page-subtitle{
-  font-size: 20px;
-}
-
-.img-article{
-  width: 50%;
-}
-
-.article-body{
-  font-size: 15px;
-}
-
-.container-img{
-  width: 100%;
-  display: flex;
-  align-items: flex-start;
-}
-
-.date-articles{
-  font-size: 13px;
-  margin-right: 10%;
-}
-
-.article-author{
-  display: flex;
-  justify-content: flex-end;
-  margin-right: 3%;
+.pokemon-moves{
+    display: none;
 }
